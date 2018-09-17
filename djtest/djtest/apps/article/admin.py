@@ -1,5 +1,8 @@
 from django.contrib import admin
-from article.models import ArtBD_domain,ArtBD_auction_result,ArtBD_topic,ArtBD_article
+
+from djtest.apps.article.models import ArtBD_domain,ArtBD_auction_result,ArtBD_topic,ArtBD_article
+
+
 # Register your models here.
 
 #关联对象
