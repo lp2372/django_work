@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.article_box{
+				width: 940px;
+				height: 522px;
+				padding: 20px;
+				position: relative;
+				background: #f2f2f2;
+				margin: 200px auto;
+			}
+			.bimg_left{
+				float: left;
+			    width: 618px;
+			    border: 1px solid #ccc;
+			    background: #fff;
+			}
+			.bimg_right{
+				float: right;
+				width: 300px;
+				overflow: hidden;
+			    margin-left: 20px;
+			}
+			.img_content{
+				position: relative;
+			    width: 618px;
+			    height: 520px;
+			    overflow: hidden;
+			}
+			.img_content img {
+                display: block;
+                width: 100%;
+            }
+			.mask_area{
+				position: absolute;
+	            width: 150px;
+	            height: 150px;
+	            border-radius: 50%;
+	            left: 0;
+	            top: 0;
+	            overflow: hidden;
+	            opacity: 0;
+	            box-shadow: 0 0 20px rbga(0, 0, 0, 0.3);
+	            cursor: none;
+	            display: none;
+			}
+			.img_content:hover .mask_area {
+                opacity: 1;
+            }
+            .mask_area div {
+                position: absolute;
+                width: 1236px;
+                height: 1040px;
+                left: 0;
+                top: 0;
+            }
+			.article_title{
+			    color: #c60029;
+			    height: 28px;
+			    margin: 0px;
+			    font-size: 14px;
+			}
+			.bimg_text p{
+				border-bottom: 1px solid #ccc;
+			    word-wrap: break-word;
+		        word-break: break-all;
+			    line-height: 28px;
+			    height: 28px;
+			    margin: 0px;
+			    font-size: 14px;
+			    white-space: pre;
+			}
+			.textscroll{
+			    height: 300px;
+				overflow-y: scroll;
+				font-size: 14px;
+				line-height: 28px;
+			}
+			.iptBox {
+				position: fixed;
+				left: 50%;
+				margin-left: -195px;
+				bottom: 100px;
+			}
+			.iptBox input {
+				display: inline-block;
+				width: 252px;
+				height: 14px;
+				border-radius: 10px;
+				border: solid 1px #999;
+				padding: 13px 10px 13px 15px;
+				font-size: 16px;
+				color: #002222;
+				outline: none;
+			}
+			.iptBox .btn {
+				display: inline-block;
+				margin-left: 26px;
+				width: 80px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				background: #ba2e32;
+				border-radius: 10px;
+				cursor: pointer;
+				font-size: 18px;
+				color: #fff;
+			}
+			
+			.clearFix::after{
+				content: '';
+				display: block;
+				clear: both;
+				height: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="article_box clearFix">
+			<div class="bimg_left">
+				<div class="img_content">
+					<img src={{ thumb_img }} alt="">
+                    <div class="mask_area">
+                        <div>
+                            <img src={{ thumb_img }} alt="">
+                        </div>
+                    </div>
+				</div>
+			</div>
+			<div class="bimg_right">
+				<!--作品标题-->
+				<p class="article_title">{{ title }}</p>
+				<div class="bimg_text">
+					<p>作        者： {{ author }}</p>
+					<p>类        别： {{ keyword }}</p>
+					<p>参  考  价： {{ refer_price }}</p>
+					<p>成  交  价： {{ final_price }}</p>
+					<p>创作年代 ： {{ addtime }}</p>
+					<p>尺        寸： {{ size }}</p>
+					<p>材        质： {{ material }}</p>
+				</div>
+				<div class="textscroll"><br />
+					{{ descrip }}
+				</div>
+			</div>
+			
+			<div class="iptBox"> <input type="text" />
+				<div class='btn'>保存</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var startPoint = document.querySelector('.img_content'),
+		_dom = document.querySelector('.mask_area'),
+		_domC = _dom.querySelector('div'),
+		pos = startPoint.getBoundingClientRect(),
+		imgBaseVal = 1,
+		imgBaseW = 150;
+		
+		startPoint.onmousemove = function(e) {
+			console.log('1111');
+			_dom.style.display = 'block';
+            setPosition(e.clientX - pos.left, e.clientY - pos.top);
+            setBackgroundPosition(e.clientX - pos.left, e.clientY - pos.top);
+		}
+        startPoint.onmouseout = function(){
+			_dom.style.display = 'none';
+		}
+		startPoint.onmousewheel = startPoint.onDOMMouseScroll = function(e){
+			e.preventDefault()
+			e = e.originalEvent || window.event || e;
+            if (e.wheelDelta) { //判断浏览器IE，谷歌滑轮事件             
+                if (e.wheelDelta > 0) { //当滑轮向上滚动时
+                    up();
+                }
+                if (e.wheelDelta < 0) { //当滑轮向下滚动时
+                    down();
+                }
+            } else if (e.detail) { //Firefox滑轮事件
+                if (e.detail > 0) { //当滑轮向上滚动时
+					down();
+                }
+                if (e.detail < 0) { //当滑轮向下滚动时
+                    up();
+                }
+            }
+		}
+		startPoint.oncontextmenu = function(e) {
+			e.preventDefault()
+		}
+		function setPosition(x, y) {
+			_dom.style.left = x - imgBaseW * imgBaseVal / 2 + 'px';
+            _dom.style.top = y - imgBaseW * imgBaseVal / 2 + 'px';
+		}
+		function setBackgroundPosition(x, y){
+			var xPoint = x * 2 - imgBaseW * imgBaseVal / 2,
+                yPoint = y * 2 - imgBaseW * imgBaseVal / 2;
+            _domC.style.left = -1 * xPoint + 'px ';
+            _domC.style.top = -1 * yPoint + 'px';
+		}
+		function setBaseVal() {
+            _dom.style.width = imgBaseW * imgBaseVal + 'px';
+            _dom.style.height = imgBaseW * imgBaseVal + 'px';
+        }
+        function up() {
+            imgBaseVal = Math.min(2, imgBaseVal + 0.01);
+            setBaseVal();
+        }
+        function down() {
+            imgBaseVal = Math.max(0.5, imgBaseVal - 0.01);
+            setBaseVal();
+        }
+	</script>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+        .container{
+            margin:0 auto;
+            width:660px;
+            position: relative;
+        }
+		.title{
+			margin: 28px 0px 0;
+			font-family: "微软雅黑","宋体";
+			font-size: 24px;
+			line-height: 1.2;
+		}
+		.info{
+			line-height: 24px;
+			height: 24px;
+			color: #666666;
+			font-size: 12px;
+		}
+		.sub{
+			padding: 14px 10px;
+			font-size: 12px;
+			line-height: 24px;
+			color: #666666;
+			word-wrap: break-word;
+		}
+		.sub strong{
+			font-weight: bold;
+		}
+        img{
+            margin:10px;
+            display: block;
+            width:100% !important;
+        }
+        p{
+            line-height: 1.8;
+        }
+        .iptBox{
+            position: fixed;
+            top: 50%;
+            margin-top: -20px;
+            left: 100px;
+        }
+        .iptBox input{
+            display: inline-block;
+            width: 252px;
+            height: 14px;
+            border-radius: 10px;
+            border: solid 1px #999;
+            padding: 13px 10px 13px 15px;
+            font-size: 16px;
+            color: #002222;
+            outline: none;
+        }
+        .iptBox .btn{
+            display: inline-block;
+            margin-left: 26px;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #ba2e32;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #fff;
+        }
+	</style>
+</head>
+
+<body>
+<section class="container">
+    <h1 class="title">{{ title }}</h1>
+	<div class="info">
+		<span class="time">{{ time }}</span>
+	</div>
+	<p class="sub">
+		<strong>摘要：</strong>
+        <span>{{ descrip }}</span>
+	</p>
+    <div class="content">{{ context |safe }}</div>
+    <div class="iptBox">
+        <input type="text" />
+        <div class='btn'>保存</div>
+    </div>
+</section>
+
+    <script>
+        var subContent = document.querySelector('.sub');
+        var des = subContent.querySelector('span').innerHTML;
+        if(!des) {
+           subContent.outerHTML = '';
+        }
+    </script>
+</body>
+
+</html>
