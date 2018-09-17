@@ -23,7 +23,7 @@ sys.path.insert(0,os.path.join(BASE_DIR,'djtest/apps'))
 SECRET_KEY = '8s^gkkljsqxlu_9605^(_hyk=v-^t(cg=+oc)+tv&=j@_epw8l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['120.77.214.194','127.0.0.1'] # 该
 

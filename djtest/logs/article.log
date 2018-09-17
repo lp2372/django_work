@@ -1,1 +1,213 @@
 INFO 2018-09-17 21:38:46,401 basehttp 124 "GET /admin/ HTTP/1.1" 200 5155
+WARNING 2018-09-17 22:34:41,176 log 228 Not Found: /admin/api/1
+WARNING 2018-09-17 22:34:53,877 log 228 Not Found: /admin/api/1
+WARNING 2018-09-17 22:36:06,071 log 228 Not Found: /api/1/1
+WARNING 2018-09-17 22:37:04,259 log 228 Not Found: /
+ERROR 2018-09-17 22:46:42,578 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 22:46:43,453 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 22:46:52,710 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 22:46:53,260 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 22:46:53,420 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 22:49:58,440 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 22:49:58,990 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 22:49:59,142 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 22:49:59,288 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 22:49:59,442 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 22:49:59,633 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 22:49:59,775 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 22:49:59,933 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 22:50:00,141 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 23:06:07,909 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/django_work/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/django_work/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/django_work/lib/python3.5/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/Desktop/work/django_work/djtest/djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 23:06:07,932 basehttp 124 "GET / HTTP/1.1" 500 27
+ERROR 2018-09-17 23:06:09,543 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/django_work/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/django_work/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/django_work/lib/python3.5/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/Desktop/work/django_work/djtest/djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 23:06:09,544 basehttp 124 "GET / HTTP/1.1" 500 27
+ERROR 2018-09-17 23:06:18,154 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/django_work/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/django_work/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/django_work/lib/python3.5/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/Desktop/work/django_work/djtest/djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 23:06:18,172 basehttp 124 "GET / HTTP/1.1" 500 27
+ERROR 2018-09-17 23:06:18,758 log 228 Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/django_work/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/django_work/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/django_work/lib/python3.5/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/Desktop/work/django_work/djtest/djtest/apps/article/views.py", line 11, in index
+    return render("/admin")
+TypeError: render() missing 1 required positional argument: 'template_name'
+ERROR 2018-09-17 23:06:18,759 basehttp 124 "GET / HTTP/1.1" 500 27
+INFO 2018-09-17 23:07:11,694 basehttp 124 "GET / HTTP/1.1" 302 0
+INFO 2018-09-17 23:07:11,699 basehttp 124 "GET /admin HTTP/1.1" 301 0
+INFO 2018-09-17 23:07:12,010 basehttp 124 "GET /admin/ HTTP/1.1" 200 5155
+INFO 2018-09-17 23:07:15,341 basehttp 124 "GET /admin/ HTTP/1.1" 200 5155
+INFO 2018-09-17 23:07:16,370 basehttp 124 "GET / HTTP/1.1" 302 0
+INFO 2018-09-17 23:07:16,564 basehttp 124 "GET /admin/ HTTP/1.1" 200 5155

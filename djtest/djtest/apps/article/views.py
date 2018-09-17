@@ -1,20 +1,14 @@
 import json
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 
 from djtest.apps.article.models import ArtBD_domain,ArtBD_article, ArtBD_auction_result
 
 
 def index(request):
-    obj = ArtBD_domain.objects.all()[0]
-    print(obj)
-    top_obj = obj.artbd_topic_set.all()
-    for obj in top_obj:
-        print(obj.name)
-
-    return HttpResponse('hello django')
+    return redirect("/admin")
 
 def test(request):
     context = {'name': 'django'}
