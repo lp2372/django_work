@@ -126,26 +126,28 @@ class ArticleKeyword(View):
         keyword = request.POST.get("keyword")
         keyword_list = keyword.split(",")
         print(keyword_list)
+
         for keyword in keyword_list:
             try:
-                query_set = ArtBD_Article_Keyword.objects.get(article=id,name = keyword)
-            except Exception as e:
 
+                keyword_obj = ArtBD_Article_Keyword.objects.get(article=id, name=keyword)
+            except:
                 obj = ArtBD_article.objects.get(id =id)
-                content = obj.content
-                times = len(content.split(keyword))-1
+                ArtBD_Article_Keyword.objects.create(name=keyword,article =obj)
 
-                if times != 0:
 
-                    ArtBD_Article_Keyword.objects.create(name=keyword,times = times,article = obj)
-                else:
-                    print('这是一个0')
+
         return JsonResponse({'success': 'ok'})
 
 
     def get(self,request):
         id = request.GET.get("id")
-        return JsonResponse(['article','hi'],safe=False)
+        article_obj = ArtBD_article.objects.get(id=id)
+        keyword_obj = article_obj.artbd_article_keyword_set.all()
+        keyword_list = []
+        for obj in keyword_obj:
+            keyword_list.append(obj.name)
+        return JsonResponse(keyword_list,safe=False)
 
 class AuctionKeyword(View):
     def post(self, request):

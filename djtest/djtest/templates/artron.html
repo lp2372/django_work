@@ -115,7 +115,9 @@
 					$('.keyword').val(res);
 				}
 			})
-			
+			$('.keyword').focus(function(){
+				$(this).val('')
+			})
 			$('.btn').click(function(){
 				$.ajax({
 					url: 'http://127.0.0.1:8000/admin/article/article/keyword/',

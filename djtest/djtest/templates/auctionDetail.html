@@ -173,24 +173,31 @@
 			pos = startPoint.getBoundingClientRect(),
 			imgBaseVal = 1,
 			imgBaseW = 150;
+            $('.keyword').focus(function(){
+				$(this).val('')
+			})
 
-			$.ajax({
-				url: 'http://127.0.0.1:8000/admin/article/auction/keyword/',
-				type: 'GET',
-                dataType:'json',
-				data: {
-				'id': $('.keyId').text()
-			},
-				success: function(res){
-				    console.log(111);
-					$('.keyword').val(res);
+            getKeyWord();
 
-				},
-                error: function (e) {
-                    console.log(e);
-                }
-			});
-			
+            function getKeyWord() {
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/admin/article/auction/keyword/',
+                    type: 'GET',
+                    dataType:'json',
+                    data: {
+                    'id': $('.keyId').text()
+                },
+                    success: function(res){
+                        console.log(111);
+                        $('.keyword').val(res);
+
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                });
+            }
+
 			$('.btn').click(function(){
 				$.ajax({
 					url: 'http://127.0.0.1:8000/admin/article/auction/keyword/',
@@ -203,10 +210,14 @@
 					headers: {"X-CSRFtoken": getCookie('csrftoken')},
 					success: function(res){
 						if(res.success == 'ok'){
-						    alert('添加成功')
+
+                            getKeyWord();
+
+                            alert('添加成功')
                         }
 					},error:function (e) {
-                        alert(e)
+                        alert(e);
+
                     }
 				})
 			});
