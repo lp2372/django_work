@@ -7,6 +7,8 @@ from djtest.apps.article import views
 urlpatterns = [
     path('artbd_article/<int:id>/change/', views.article),
     path('artbd_auction_result/<int:id>/change/', views.auction_detail),
+    path('article/keyword/', views.ArticleKeyword.as_view()),
+    path('auction/keyword/', views.AuctionKeyword.as_view()),
     path("",views.index),
 
     path('test/', views.test),

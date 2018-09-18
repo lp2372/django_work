@@ -23,7 +23,7 @@ sys.path.insert(0,os.path.join(BASE_DIR,'djtest/apps'))
 SECRET_KEY = '8s^gkkljsqxlu_9605^(_hyk=v-^t(cg=+oc)+tv&=j@_epw8l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['120.77.214.194','127.0.0.1'] # 该
 
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -136,6 +136,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_files')] # 线下测试用　静态文件夹目录
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static') #静态文件夹
 
 

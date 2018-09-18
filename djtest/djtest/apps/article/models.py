@@ -81,7 +81,31 @@ class ArtBD_auction_result(models.Model):
         verbose_name_plural = verbose_name
 
 
+class ArtBD_Keyword(models.Model):
+    name = models.CharField(max_length=32,null= False)
+    weight = models.SmallIntegerField(null=False,default='1')
+    status = models.SmallIntegerField(null=False,default='0')
 
+    class Meta:
+        db_table = 'artBD_keyword'
+
+class ArtBD_Article_Keyword(models.Model):
+
+    name = models.CharField(max_length=32)
+    times = models.SmallIntegerField(null=False,default='1')
+    article = models.ForeignKey('ArtBD_article',on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'artBD_article_keyword'
+
+#  CREATE TABLE `artBD_article_keyword` (
+#   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+#   `article_id` bigint(20) NOT NULL,
+#   `name` varchar(32) NOT NULL,
+#   `times` smallint(6) NOT NULL DEFAULT '1',
+#   PRIMARY KEY (`id`),
+#   KEY `article_id` (`article_id`)
+# ) ENGINE=MyISAM DEFAULT CHARSET=utf8
 
 
 

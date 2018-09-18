@@ -65,10 +65,10 @@ class ArticleAdmin(admin.ModelAdmin):
     list_per_page = 10
     search_fields = ['title','author','descrip','addtime','pageviews','comments']
 
-admin.site.site_title = '亚特网'
-admin.site.site_header = '亚特网'
-admin.site.index_title = '亚特网后台管理系统'
+admin.site.site_title = '雅特网'
+admin.site.site_header = '雅特网'
+admin.site.index_title = '雅特网后台管理系统'
 # admin.site.register(ArtBD_domain,DomainAdmin)
 # admin.site.register(ArtBD_auction_result)
 # admin.site.register(ArtBD_topic,TopicAdmin)
-# admin.site.register(ArtBD_article)
+# admin.site.register(ArtBD_article)雅

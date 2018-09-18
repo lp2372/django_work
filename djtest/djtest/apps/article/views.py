@@ -1,10 +1,12 @@
 import json
 
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.template import loader
+from django.views import View
 
-from djtest.apps.article.models import ArtBD_domain,ArtBD_article, ArtBD_auction_result
+from djtest.apps.article.models import ArtBD_domain,ArtBD_article, ArtBD_auction_result, ArtBD_Article_Keyword
 
 
 def index(request):
@@ -39,7 +41,7 @@ def article(request,id):
     descrip = descrip.replace(")",'').replace("(",'').replace("'",'').strip()
     time = obj.addtime
 
-    content = {'title':title,'descrip':descrip,'time':time,'context': context}
+    content = {'title':title,'descrip':descrip,'time':time,'context': context,"id":id}
 
     # 获取模板对象
     # template = loader.get_template('index.html')  # type:
@@ -86,7 +88,7 @@ def auction_detail(request,id):
 
     content = {'title':title,'author':author,'keyword':keyword,'descrip':descrip,'addtime':addtime,
                'material':material,'size':size,'refer_price':refer_price,'final_price':final_price,
-               'thumb_img':thumb_img}
+               'thumb_img':thumb_img,'id':id}
     return render(request, 'auctionDetail.html', content)
 
 def api(request,id):
@@ -115,5 +117,43 @@ def api(request,id):
     response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
     response["Access-Control-Max-Age"] = "1000"
     response["Access-Control-Allow-Headers"] = "*"
-
     return response
+
+class ArticleKeyword(View):
+    """增加关键字词"""
+    def post(self,request):
+        id = request.POST.get("id") # 文章ｉｄ
+        keyword = request.POST.get("keyword")
+        keyword_list = keyword.split(",")
+        print(keyword_list)
+        for keyword in keyword_list:
+            try:
+                query_set = ArtBD_Article_Keyword.objects.get(article=id,name = keyword)
+            except Exception as e:
+
+                obj = ArtBD_article.objects.get(id =id)
+                content = obj.content
+                times = len(content.split(keyword))-1
+
+                if times != 0:
+
+                    ArtBD_Article_Keyword.objects.create(name=keyword,times = times,article = obj)
+                else:
+                    print('这是一个0')
+        return JsonResponse({'success': 'ok'})
+
+
+    def get(self,request):
+        id = request.GET.get("id")
+        return JsonResponse(['article','hi'],safe=False)
+
+class AuctionKeyword(View):
+    def post(self, request):
+        id = request.POST.get("id")
+        keyword = request.POST.get("keyword")
+
+        return JsonResponse({'success':'ok'})
+
+    def get(self, request):
+        id = request.GET.get("id")
+        return JsonResponse(['美术'], safe=False)
