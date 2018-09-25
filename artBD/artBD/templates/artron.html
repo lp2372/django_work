@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+        .container{
+            margin:0 auto;
+            width:660px;
+            position: relative;
+        }
+        .container a{
+            text-decoration: none;
+        }
+        .container a:hover{
+            color: #c60029
+        }
+		.title{
+			margin: 28px 0px 0;
+			font-family: "微软雅黑","宋体";
+			font-size: 24px;
+			line-height: 1.2;
+		}
+		.info{
+			line-height: 24px;
+			height: 24px;
+			color: #666666;
+			font-size: 12px;
+		}
+		.sub{
+			padding: 14px 10px;
+			font-size: 12px;
+			line-height: 24px;
+			color: #666666;
+			word-wrap: break-word;
+		}
+		.sub strong{
+			font-weight: bold;
+		}
+        img{
+            margin:10px;
+            display: block;
+            width:100% !important;
+        }
+        p{
+            line-height: 1.8;
+        }
+        .iptBox{
+            position: fixed;
+            left: 50%;
+            margin-left: -300px;
+            bottom:10px;
+        }
+        .iptBox textarea{
+            display: inline-block;
+            width: 452px;
+            height: 80px;
+            line-height: 1.5;
+            padding: 10px;
+            font-size: 16px;
+            color: #002222;
+            outline: none;
+            resize: none;
+        }
+        .iptBox .btn{
+            display: inline-block;
+            position: absolute;
+            right: -120px;
+            bottom: 10px;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #ba2e32;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #fff;
+        }
+        .pushBox{
+        	position: absolute;
+            right: -120px;
+            bottom:60px;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #ba2e32;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #fff;
+        }
+        .keyId{
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+<section class="container">
+    <h1 class="title">{{ title }}</h1>
+	<div class="info">
+		<span class="time">{{ time }}</span>
+	</div>
+    <a href={{ url }}>文章链接</a>
+	<p class="sub">
+		<strong>摘要：</strong>
+        <span>{{ descrip }}</span>
+	</p>
+    <div class="content">{{ context |safe }}</div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="iptBox">
+        <textarea class="keyword"></textarea>
+        <div class='btn'>保存</div>
+        <div class="pushBox">推送</div>
+    </div>
+    <div class="keyId">{{ id }}</div>
+</section>
+	
+	<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script>
+    	$(function(){
+    		
+    		var subContent = document.querySelector('.sub');
+	        var des = subContent.querySelector('span').innerHTML;
+	        if(!des) {
+	           subContent.outerHTML = '';
+	        }
+	        
+	        $.ajax({
+				url: 'http://120.77.214.194:8099/admin/article/article/keyword/',
+				type: 'GET',
+				data: {
+					'id': $('.keyId').text()
+				},
+				success: function(res){
+					$('.keyword').val(res);
+				}
+			});
+
+			$('.btn').click(function(){
+				$.ajax({
+					url: 'http://120.77.214.194:8099/admin/article/article/keyword/',
+					type: 'POST',
+					data: {
+						'id': $('.keyId').text(),
+						'keyword': $('.keyword').val()
+					},
+					headers: {"X-CSRFtoken": getCookie('csrftoken')},
+					success: function(res){
+						if(res.success == 'ok'){
+						    alert('添加成功')
+                        }
+					},error:function (e) {
+                        alert(e)
+                    }
+				})
+			});
+			
+			$('.pushBox').click(function(){
+				$.ajax({
+					url: 'http://120.77.214.194:8099/admin/article/push/',
+					type: 'GET',
+					data: {
+						'id': $('.keyId').text()
+					},
+					success: function(res){
+						if(res.success == 'ok'){
+						    alert('添加成功')
+                        }
+					},error:function (e) {
+                        alert(e)
+                    }
+				})
+			});
+			
+            function getCookie(key) {
+			    var cookieArr = document.cookie.split('; ');
+			    for (var i = 0; i < cookieArr.length; i++) {
+			        var arr = cookieArr[i].split('=');
+			        if (arr[0] === key) {
+			            return arr[1];
+			        }
+			    }
+			    return false;
+			}
+    	})
+        
+    </script>
+</body>
+
+</html>

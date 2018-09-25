@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.article_box{
+				width: 940px;
+				height: 522px;
+				padding: 20px;
+				position: relative;
+				background: #f2f2f2;
+				margin: 200px auto;
+			}
+			.bimg_left{
+				float: left;
+			    width: 618px;
+			    border: 1px solid #ccc;
+			    background: #fff;
+			}
+			.bimg_right{
+				float: right;
+				width: 300px;
+				overflow: hidden;
+			    margin-left: 20px;
+			}
+			.img_content{
+				position: relative;
+			    width: 618px;
+			    height: 520px;
+			    overflow: hidden;
+			}
+			.img_content img {
+                display: block;
+                max-width: 100%;
+                max-height: 100%;
+               	position: absolute;
+               	margin: auto;
+               	left: 0;
+               	top: 0;
+               	right: 0;
+               	bottom: 0;
+            }
+			.mask_area{
+				position: absolute;
+	            width: 150px;
+	            height: 150px;
+	            border-radius: 50%;
+	            left: 0;
+	            top: 0;
+	            overflow: hidden;
+	            opacity: 0;
+	            box-shadow: 0 0 20px rbga(0, 0, 0, 0.3);
+	            cursor: none;
+	            display: none;
+			}
+			.img_content:hover .mask_area {
+                opacity: 1;
+            }
+            .mask_area div {
+                position: absolute;
+                width: 1236px;
+                height: 1040px;
+               	left: 0;
+               	top: 0;
+            }
+			.article_title{
+			    color: #c60029;
+			    height: 28px;
+			    margin: 0px;
+			    font-size: 14px;
+			}
+			.bimg_text p{
+				border-bottom: 1px solid #ccc;
+			    word-wrap: break-word;
+		        word-break: break-all;
+			    line-height: 28px;
+			    height: 28px;
+			    margin: 0px;
+			    font-size: 14px;
+			    white-space: pre;
+			}
+			.textscroll{
+			    height: 300px;
+				overflow-y: scroll;
+				font-size: 14px;
+				line-height: 28px;
+			}
+            .textscroll a{
+                text-decoration: none;
+                display: block;
+                margin-top:8px;
+            }
+            .textscroll a:hover{
+                color: #c60029;
+            }
+			.iptBox {
+				position: fixed;
+	            left: 50%;
+	            margin-left: -300px;
+				bottom: 20px;
+			}
+			.iptBox textarea {
+				display: inline-block;
+	            width: 452px;
+	            height: 80px;
+	            line-height: 1.5;
+	            padding: 10px;
+	            font-size: 16px;
+	            color: #002222;
+	            outline: none;
+	            resize: none;
+			}
+			.iptBox .btn {
+				display: inline-block;
+				position: absolute;
+            	right: -110px;
+	            bottom: 5px;
+				margin-left: 26px;
+				width: 80px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				background: #ba2e32;
+				border-radius: 10px;
+				cursor: pointer;
+				font-size: 18px;
+				color: #fff;
+			}
+			
+			.clearFix::after{
+				content: '';
+				display: block;
+				clear: both;
+				height: 0;
+			}
+			.keyId{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="article_box clearFix">
+			<div class="bimg_left">
+				<div class="img_content">
+					<img src={{ thumb_img }} alt="">
+                    <div class="mask_area">
+                        <div>
+                            <img src={{ thumb_img }} alt="">
+                        </div>
+                    </div>
+				</div>
+			</div>
+			<div class="bimg_right">
+				<p class="article_title">{{ title }}</p >
+				<div class="bimg_text">
+					<p>作        者： {{ author }}</p >
+					<p>类        别： {{ keyword }}</p >
+					<p>参  考  价： {{ refer_price }}</p >
+					<p>成  交  价： {{ final_price }}</p >
+					<p>创作年代 ： {{ addtime }}</p >
+					<p>尺        寸： {{ size }}</p >
+					<p>材        质： {{ material }}</p >
+				</div>
+				<div class="textscroll">
+                    <a href={{ url }}>作品链接</a>
+					{{ descrip }}
+				</div>
+			</div>
+			
+			<div class="iptBox">
+				<textarea class="keyword"></textarea>
+				<div class='btn'>保存</div>
+			</div>
+			
+			<div class="keyId">{{ id }}</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var startPoint = document.querySelector('.img_content'),
+			_dom = document.querySelector('.mask_area'),
+			_domC = _dom.querySelector('div'),
+			pos = startPoint.getBoundingClientRect(),
+			imgBaseVal = 1,
+			imgBaseW = 150;
+{#            $('.keyword').focus(function(){#}
+{#				$(this).val('')#}
+{#			})#}
+
+            getKeyWord();
+
+            function getKeyWord() {
+                $.ajax({
+                    url: 'http://120.77.214.194:8099/admin/article/auction/keyword/',
+                    type: 'GET',
+                    dataType:'json',
+                    data: {
+                    'id': $('.keyId').text()
+                },
+                    success: function(res){
+                        console.log(111);
+                        $('.keyword').val(res);
+
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                });
+            }
+
+			$('.btn').click(function(){
+				$.ajax({
+					url: 'http://120.77.214.194:8099/admin/article/auction/keyword/',
+					type: 'POST',
+
+					data: {
+						'id': $('.keyId').text(),
+						'keyword': $('.keyword').val()
+					},
+					headers: {"X-CSRFtoken": getCookie('csrftoken')},
+					success: function(res){
+						if(res.success == 'ok'){
+
+                            getKeyWord();
+
+                            alert('添加成功')
+                        }
+					},error:function (e) {
+                        alert(e);
+
+                    }
+				})
+			});
+			
+			startPoint.onmousemove = function(e) {
+				_dom.style.display = 'block';
+	            setPosition(e.clientX - pos.left, e.clientY - pos.top);
+	            setBackgroundPosition(e.clientX - pos.left, e.clientY - pos.top);
+			}
+	        startPoint.onmouseout = function(){
+				_dom.style.display = 'none';
+			}
+			startPoint.onmousewheel = startPoint.onDOMMouseScroll = function(e){
+				e.preventDefault()
+				e = e.originalEvent || window.event || e;
+	            if (e.wheelDelta) { //判断浏览器IE，谷歌滑轮事件             
+	                if (e.wheelDelta > 0) { //当滑轮向上滚动时
+	                    up();
+	                }
+	                if (e.wheelDelta < 0) { //当滑轮向下滚动时
+	                    down();
+	                }
+	            } else if (e.detail) { //Firefox滑轮事件
+	                if (e.detail > 0) { //当滑轮向上滚动时
+						down();
+	                }
+	                if (e.detail < 0) { //当滑轮向下滚动时
+	                    up();
+	                }
+	            }
+			}
+			startPoint.oncontextmenu = function(e) {
+				e.preventDefault()
+			}
+			function setPosition(x, y) {
+				_dom.style.left = x - imgBaseW * imgBaseVal / 2 + 'px';
+	            _dom.style.top = y - imgBaseW * imgBaseVal / 2 + 'px';
+			}
+			function setBackgroundPosition(x, y){
+				var xPoint = x * 2 - imgBaseW * imgBaseVal / 2,
+	                yPoint = y * 2 - imgBaseW * imgBaseVal / 2;
+	            _domC.style.left = -1 * xPoint + 'px ';
+	            _domC.style.top = -1 * yPoint + 'px';
+			}
+			function setBaseVal() {
+	            _dom.style.width = imgBaseW * imgBaseVal + 'px';
+	            _dom.style.height = imgBaseW * imgBaseVal + 'px';
+	        }
+	        function up() {
+	            imgBaseVal = Math.min(2, imgBaseVal + 0.01);
+	            setBaseVal();
+	        }
+	        function down() {
+	            imgBaseVal = Math.max(0.5, imgBaseVal - 0.01);
+	            setBaseVal();
+	        }
+	        function getCookie(key) {
+			    var cookieArr = document.cookie.split('; ');
+			    for (var i = 0; i < cookieArr.length; i++) {
+			        var arr = cookieArr[i].split('=');
+			        if (arr[0] === key) {
+			            return arr[1];
+			        }
+			    }
+			    return false;
+			}
+		})
+		
+		
+	</script>
+</html>

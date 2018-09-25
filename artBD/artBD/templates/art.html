@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+        .container{
+            margin:0 auto;
+            width:660px;
+        }
+		.title{
+			margin: 28px 0px 0;
+			font-family: "微软雅黑","宋体";
+			font-size: 24px;
+			line-height: 1.2;
+		}
+		.info{
+			line-height: 24px;
+			height: 24px;
+			color: #666666;
+			font-size: 12px;
+		}
+		.sub{
+			padding: 14px 10px;
+			font-size: 12px;
+			line-height: 24px;
+			color: #666666;
+			word-wrap: break-word;
+		}
+		.sub strong{
+			font-weight: bold;
+		}
+        img{
+            margin:10px;
+            display: block;
+            width:100% !important;
+        }
+        p{
+            line-height: 1.8;
+        }
+	</style>
+</head>
+
+<body>
+<section class="container">
+    <h1 class="title">{{ title }}</h1>
+	<div class="info">
+		<span class="time">{{ time }}</span>
+	</div>
+	<p class="sub">
+		<strong>摘要：</strong>
+        <span>{{ descrip }}</span>
+	</p>
+    <div class="content">{{ context |safe }}</div>
+</section>
+
+    <scirpt>
+        var subContent = document.querySelector('.sub');
+        var des = subContent.querySelector('span').innerHTML;
+        if(!des) {
+           subContent.outerHTML = '';
+        }
+    </scirpt>
+</body>
+
+</html>

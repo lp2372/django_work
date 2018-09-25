@@ -1,0 +1,7 @@
+Connection: T(MYSQL)  D(artBD)  U(root)   at 14:59
+mysql: [Warning] Using a password on the command line interface can be insecure.
++--------------------------------------------------------------------------------------------------------------+
+| concat('/img/',a.domain,'/',substring(artBD_article.md5_url,2,32), '/', cast(b.id as char),'/thumb_img.jpg') |
++--------------------------------------------------------------------------------------------------------------+
+| /img/cguardian.com/6e0ff6740e0bf8001db9d785fb4c9f01/1/thumb_img.jpg                                          |
++--------------------------------------------------------------------------------------------------------------+
